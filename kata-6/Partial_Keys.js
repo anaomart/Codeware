@@ -5,9 +5,10 @@ function partialKeys(obj) {
                 return myObj[key];
             }
         }
+        // we use proxy to redefine the opeartions of object works
         //Object.keys(myobj) -> we get the keys like [omar,amr, oa]
         //.sort()            -> then we sort them becuse if there keys have the first same letter we get the the first by alphaptice order 
-        //.find()            -> we have it a function (arrow) that check if any of the keys == the property 
+        //.find()            -> we give it a function (arrow) that check if any of the keys == the property 
 
     let myProxyObj = new Proxy(obj, handler);
 }
