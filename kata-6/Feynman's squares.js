@@ -1,10 +1,8 @@
 function countSquares(n) {
-    let count = 0;
     let result = 0;
-    for (let = 0; I)
-
-
-        console.log('good')
+    for (let i = 0; i <= n; i++)
+        result  += i * i;
+    return result;
 }
 
-console.log(countSquares(5))
+console.log(countSquares(15))
