@@ -3,7 +3,7 @@ function openOrSenior(data) {
 
     data.forEach(e => {
         if (e[0] >= 55 && e[1] > 7) {
-            result.push('"Senior"')
+            result.push('Senior')
         } else {
             result.push('Open')
         }
