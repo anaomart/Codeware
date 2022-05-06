@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Problem Solver</title>
+    <script>
+        window.onload = function() {
+            // Total Xs on each side of equation
+            // Example problem: 5x + 2 = 10 - 2x
+            var leftSideXTotal = 0; // 5
+            var rightSideXTotal = 0; // -2
+
+            // Total integers on each side of equation
+            // Example problem: 5x + 2 = 10 - 2x
+            var leftSideIntTotal = 0; // 2
+            var rightSideIntTotal = 0; // 10
+
+
+            // Enter a math problem to solve
+            var problem = "2 -2 +3 =2x";
+
+
+            // Remove all spaces in problem
+            // Example problem: 5x + 2 = 10 - 2x
+            problem = problem.replace(/\s/g, ''); // 5x+2=10-2x
+
+            // Add + signs in front of all - signs
+            // Example problem: 5x + 2 = 10 - 2x
+            problem = problem.replace(/-/gi, "+-"); // 5x+2=10+-2x
+
+            // Split problem into left and right sides
+            // Example problem: 5x + 2 = 10 - 2x
+            var problemArray = problem.split("=");
+            var problemLeftSide = problemArray[0]; // 5x+2
+            var problemRightSide = problemArray[1]; // 10+-2x
+
+            // Split values on each side into an array
+            var problemLeftSideValues = problemLeftSide.split("+");
+            var problemRightSideValues = problemRightSide.split("+");
+
+            // Go through the left side values and add them up
+            for (var i = 0; i < problemLeftSideValues.length; i++) {
+
+                // Current value
+                var currentValue = problemLeftSideValues[i];
+                // Length of current value
+                var currentValueLength = currentValue.length;
+
+                if (currentValue.charAt(currentValueLength - 1) == "x") { //Check if current value is a X value
+
+                    // Remove X from end of current value
+                    currentValue = currentValue.split("x");
+
+                    // Add to total Xs on left side
+                    leftSideXTotal = Number(leftSideXTotal) + Number(currentValue[0]);
+
+                } else {
+
+                    // Add to total integers on left side
+                    leftSideIntTotal = Number(leftSideIntTotal) + Number(problemLeftSideValues[i]);
+
+                }
+            }
+
+            // Go through the right side values and add them up
+            for (var i = 0; i < problemRightSideValues.length; i++) {
+
+                // Current value
+                var currentValue = problemRightSideValues[i];
+                // Length of current value
+                var currentValueLength = currentValue.length;
+
+                if (currentValue.charAt(currentValueLength - 1) == "x") { //Check if current value is a X value
+
+                    // Remove X from end of current value
+                    currentValue = currentValue.split("x");
+
+                    // Add to total Xs on right side
+                    rightSideXTotal = Number(rightSideXTotal) + Number(currentValue[0]);
+
+                } else {
+
+                    // Add to total integers on right side
+                    rightSideIntTotal = Number(rightSideIntTotal) + Number(problemRightSideValues[i]);
+
+                }
+            }
+
+            // Compute
+            var totalXs = (leftSideXTotal - rightSideXTotal)
+            var totalIntegers = (rightSideIntTotal - leftSideIntTotal)
+            var solution = (totalIntegers / totalXs)
+
+            // Display solution
+            document.getElementById("divSolution").innerText = solution;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="divSolution"></div>
+</body>
+
+</html>
