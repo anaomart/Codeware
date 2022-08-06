@@ -1,1 +1,22 @@
 
+function isPrime(n) {
+    if (n === 2) return true;
+    if (n % 2 === 0) return false;
+    for (let i = 3; i * i <= n; i += 2)
+        if (n % i === 0) return false;
+    return n > 2;
+}
+const reverseNum = n => +[...
+    "" + n
+].reverse().join("");
+let result = []
+for (let i = 89; result.length < 250; i++) {
+    if (isPrime(reverseNum(i ** 2)) && isPrime(reverseNum(i ** 3))) {
+        result.push(i);
+    }
+}
+const sqCubRevPrime = (n) => {
+    return result[n - 1];
+}
+
+console.log(sqCubRevPrime(1));
