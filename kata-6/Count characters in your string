@@ -1,0 +1,16 @@
+function count (string) {  
+  let table = {} ;
+  
+  [...string].map(letter => {
+  if(table[letter]){
+    table[letter]++;
+  }else {
+    table[letter]= 1;
+  }
+  
+  })
+  
+  return table
+  
+  
+}
